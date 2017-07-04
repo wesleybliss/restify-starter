@@ -1,0 +1,28 @@
+{
+  "name": "restify-starter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "morgan": "^1.8.1",
+    "require-all": "^2.2.0",
+    "restify": "^4.3.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://"
+  },
+  "author": "Wesley Bliss <wesley.bliss@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://"
+  },
+  "homepage": ""
+}
