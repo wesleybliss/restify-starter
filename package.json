@@ -9,6 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "mongoose": "^4.11.1",
     "morgan": "^1.8.1",
     "require-all": "^2.2.0",
     "restify": "^4.3.0",

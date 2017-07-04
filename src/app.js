@@ -19,8 +19,8 @@ app.use(restify.gzipResponse())
 app.use(restify.CORS())
 
 app.use(uams({
-    uri: `mongodb://${config.db.user}:${config.db.pass}` +
-        `@${config.db.host}:${config.db.port}/${config.db.name}`
+    log,
+    mongoose: require('./utils/mongoose')
 }))
 
 app.on('InternalError', (req, res, err) => {
@@ -41,13 +41,6 @@ app.opts(/\.*/, (req, res, next) => {
 app.use((req, res, next) => {
     log.info(req.method, req.url)
     next()
-})
-
-app.get('/status', (req, res) => {
-    res.send(200, {
-        name: app.name,
-        version: app.version
-    })
 })
 
 app.on('after', (req, res, route, err) => {
