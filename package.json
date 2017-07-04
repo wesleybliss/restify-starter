@@ -14,7 +14,9 @@
     "restify": "^4.3.0",
     "winston": "^2.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^4.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://"

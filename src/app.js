@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const restify = require('restify')
 const log = require('./utils/logger')
 const uams = require('../../uams')
+const config = require('./config')
 
 const app = restify.createServer({
     name:    'Restify Starter',

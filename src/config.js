@@ -1,5 +1,5 @@
 
-const { defaultEnv } = require('./utils/env')
+const { defaultEnv, requireEnv } = require('./utils/env')
 
 
 const config = {
