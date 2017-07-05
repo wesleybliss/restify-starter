@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -14,6 +14,7 @@
     "morgan": "^1.8.1",
     "require-all": "^2.2.0",
     "restify": "^4.3.0",
+    "restify-errors": "^4.3.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {

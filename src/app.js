@@ -20,6 +20,7 @@ app.use(restify.CORS())
 
 app.use(uams({
     log,
+    app,
     mongoose: require('./utils/mongoose')
 }))
 
