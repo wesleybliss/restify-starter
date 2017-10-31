@@ -5,17 +5,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "echo '@todo remove nodemon watch on uams when done' && nodemon --watch ../uams --watch ./ src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "mongoose": "^4.11.1",
-    "morgan": "^1.8.1",
+    "bluebird": "^3.5.1",
+    "mongoose": "^4.12.5",
+    "morgan": "^1.9.0",
     "require-all": "^2.2.0",
-    "restify": "^4.3.0",
-    "restify-errors": "^4.3.0",
-    "winston": "^2.3.1"
+    "restify": "^6.2.3",
+    "restify-cors-middleware": "^1.0.1",
+    "restify-errors": "^5.0.0",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "dotenv": "^4.0.0"

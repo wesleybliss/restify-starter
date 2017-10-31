@@ -1,8 +1,8 @@
 'use strict'
 const morgan = require('morgan')
 const restify = require('restify')
+const corsMiddleware = require('restify-cors-middleware')
 const log = require('./utils/logger')
-const uams = require('../../uams')
 const config = require('./config')
 
 const app = restify.createServer({
@@ -10,33 +10,47 @@ const app = restify.createServer({
     version: '1.0.0'
 })
 
-app.use(morgan('combined', { stream: msg => console.info(msg) }))
-app.use(restify.acceptParser(app.acceptable))
-app.use(restify.fullResponse())
-app.use(restify.queryParser())
-app.use(restify.bodyParser())
-app.use(restify.gzipResponse())
-app.use(restify.CORS())
+const cors = corsMiddleware({
+    preflightMaxAge: 5, //Optional
+    origins: ['*'],
+    allowHeaders: [
+        'X-Access-Token',
+        'Access-Control-Allow-Origin',
+        'Access-Control-Allow-Methods',
+        'Access-Control-Allow-Headers'
+    ],
+    exposeHeaders: ['API-Token-Expiry']
+})
 
-app.use(uams({
+app.use(restify.plugins.acceptParser(app.acceptable))
+app.use(restify.plugins.fullResponse())
+app.use(restify.plugins.queryParser())
+app.use(restify.plugins.bodyParser({ extended: true }))
+app.use(restify.plugins.gzipResponse())
+app.use(restify.plugins.authorizationParser())
+app.pre(cors.preflight)
+app.use(cors.actual)
+
+const uams = require('../../uams')({
     log,
     app,
-    mongoose: require('./utils/mongoose')
-}))
+    mongoose: require('./utils/mongoose'),
+    userField: 'email',
+    passField: 'password',
+    jwtTokenSecret: 'abc123',
+    jwtExpiresIn: '24hr',
+    excludeDbFields: [
+        '__v',
+        'password',
+        'lastActiveAt'
+    ]
+})
+
+app.use(uams.middleware)
 
 app.on('InternalError', (req, res, err) => {
     log.error(err)
     res.send(err.statusCode || 500, { error: err })
-})
-
-// CORS nonsense
-app.opts(/\.*/, (req, res, next) => {
-    //res.setHeader('Access-Control-Allow-Origin', `http://${host}:${port}`)
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Accept')
-    res.send(200)
-    next()
 })
 
 app.use((req, res, next) => {
