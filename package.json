@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "echo '@todo remove nodemon watch on uams when done' && nodemon --watch ../uams --watch ./ src/index.js",
+    "start": "nodemon --watch ./ src/index.js",
+    "dev": "echo '@todo remove nodemon watch on uams when done' && nodemon --watch ../uams --watch ./ src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pm2": "NODE_ENV=production PORT=3000 pm2 start src/index.js --name restify-starter"
   },
