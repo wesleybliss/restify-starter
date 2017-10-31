@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const log = require('./utils/logger')
 
 // If we're not running in prod, load env vars from a file
 if (process.env.NODE_ENV !== 'production')
@@ -9,6 +8,7 @@ if (process.env.NODE_ENV !== 'production')
         path: path.resolve(__dirname, '../.env')
     })
 
+const log = require('./utils/logger')
 const app = require('./app')
 
 require('require-all')(path.resolve(__dirname, 'routes'))
