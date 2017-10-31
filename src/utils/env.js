@@ -1,16 +1,30 @@
+'use strict'
 
-const defaultEnv = (name, defaultVal, throwIfEmpty) => {
+/**
+ * Gets an environment variable, with optional default, and required flag.
+ * 
+ * @param  {String}  name           Name of environment variable (e.g. "NODE_ENV")
+ * @param  {Any}     [defaultVal]   Default value, if env var is empty
+ * @param  {Boolean} [throwIfEmpty] Throw an error if the env is missing/empty
+ * @return {Any}                    Env var value
+ */
+const defaultEnv = (name, defaultVal = null, throwIfEmpty = false) => {
     
     if (process.env.hasOwnProperty(name))
         return process.env[name]
     
     if (throwIfEmpty === true)
-        throw 'Missing environment variable ' + name
+        throw new Error(`Missing environment variable ${name}`)
     
     return defaultVal
     
 }
 
+/**
+ * Require an environment variable.
+ * 
+ * @param  {String} name Name of environment variable (e.g. "NODE_ENV")
+ */
 const requireEnv = name => defaultEnv(name, null, true)
 
 

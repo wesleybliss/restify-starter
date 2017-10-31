@@ -1,6 +1,6 @@
+'use strict'
 
 const { defaultEnv, requireEnv } = require('./utils/env')
-
 
 const config = {
     
@@ -12,19 +12,11 @@ const config = {
     },
     
     db: {
-        host: requireEnv('UAMS_DB_HOST'),
-        port: requireEnv('UAMS_DB_PORT'),
-        user: requireEnv('UAMS_DB_USER'),
-        pass: encodeURIComponent(requireEnv('UAMS_DB_PASS')),
-        name: requireEnv('UAMS_DB_NAME'),
-        uri: '' /* Populated below */,
+        uri: requireEnv('UAMS_MONGODB_URI'),
         failMongoOnError: true
     }
     
 }
-
-config.db.uri = `mongodb://${config.db.user}:${config.db.pass}` +
-    `@${config.db.host}:${config.db.port}/${config.db.name}`
 
 
 module.exports = config

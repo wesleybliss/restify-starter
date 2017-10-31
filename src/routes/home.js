@@ -1,5 +1,6 @@
-const app = require('../app')
+'use strict'
 
+const app = require('../app')
 
 app.get('/', (req, res) => {
     res.send(200, {

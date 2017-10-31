@@ -1,9 +1,10 @@
 'use strict'
-const morgan = require('morgan')
+
 const restify = require('restify')
 const corsMiddleware = require('restify-cors-middleware')
 const log = require('./utils/logger')
 const config = require('./config')
+const userSchema = require('./schemas/user')
 
 const app = restify.createServer({
     name:    'Restify Starter',
@@ -43,7 +44,8 @@ const uams = require('../../uams')({
         '__v',
         'password',
         'lastActiveAt'
-    ]
+    ],
+    userSchema
 })
 
 app.use(uams.middleware)

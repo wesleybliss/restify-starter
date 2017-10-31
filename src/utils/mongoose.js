@@ -1,4 +1,5 @@
 'use strict'
+
 const config = require('../config')
 const log = require('./logger')
 const mongoose = require('mongoose')

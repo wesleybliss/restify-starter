@@ -6,12 +6,12 @@
   "main": "index.js",
   "scripts": {
     "start": "echo '@todo remove nodemon watch on uams when done' && nodemon --watch ../uams --watch ./ src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pm2": "NODE_ENV=production PORT=3000 pm2 start src/index.js --name restify-starter"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
     "mongoose": "^4.12.5",
-    "morgan": "^1.9.0",
     "require-all": "^2.2.0",
     "restify": "^6.2.3",
     "restify-cors-middleware": "^1.0.1",
