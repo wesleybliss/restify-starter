@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "mongoose": "^4.12.5",
+    "mongoose": "^5.0.12",
     "require-all": "^2.2.0",
-    "restify": "^6.2.3",
+    "restify": "^7.1.0",
     "restify-cors-middleware": "^1.0.1",
-    "restify-errors": "^5.0.0",
+    "restify-errors": "^6.0.0",
     "winston": "^2.4.0"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^5.0.1"
   },
   "repository": {
     "type": "git",
