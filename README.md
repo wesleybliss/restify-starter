@@ -14,7 +14,7 @@ Base Restify API repo with [UAMS](https://github.com/wesleybliss/uams) support
 ## Installation
 
 ```bash
-$ npm i
+$ yarn
 ```
 
 
@@ -22,7 +22,7 @@ $ npm i
 
 ```bash
 $ npm start     // Start in development mode
-$ npm pm2       // Start PM2 for production
+$ npm run pm2   // Start PM2 for production
 ```
 
 
