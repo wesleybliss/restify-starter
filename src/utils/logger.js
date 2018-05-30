@@ -1,7 +1,7 @@
-'use strict'
+/** @module Utils/logger */
 
-const config = require('../config')
-const winston = require('winston')
+import winston from 'winston'
+import config from '../config'
 
 winston.emitErrs = true
 
@@ -11,15 +11,16 @@ const transports = []
 
 if (config.logging.console)
     transports.push(new winston.transports.Console({
-        level:             config.logging.level,
-        handleExceptions:  true,
-        json:              false,
-        colorize:          true,
-        prettyPrint:       true
+        level: config.logging.level,
+        handleExceptions: true,
+        json: false,
+        colorize: true,
+        prettyPrint: true
     }))
 
 if (config.logging.file) {
     throw new Error('@todo logging to file')
+    // eslint-disable-next-line no-unreachable
     transports.push(new winston.transports.File({
         // ...
     }))
@@ -36,4 +37,4 @@ const logger = new winston.Logger({
 })
 
 
-module.exports = logger
+export default logger

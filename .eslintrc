@@ -1,0 +1,102 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["airbnb-base"],
+    "env": {
+        "browser": false,
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "globals": {
+        "__PRODUCTION__": true,
+        "__DEVELOPMENT__": true,
+        "__TESTING__": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "allowImportExportEverywhere": false,
+        "codeFrame": false,
+        "ecmaFeatures": {
+            "modules": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        "strict": 0,
+        "func-names": "off",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": 1,
+                "outerIIFEBody": 1
+            }
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 100,
+                "comments": 100,
+                "ignorePattern": "^\\s*('.*'|\".*\"|`.*`)[,;]?$"
+            }
+        ],
+        "wrap-iife": [
+            "error",
+            "inside"
+        ],
+        "import/prefer-default-export": "off",
+        "function-paren-newline": [
+            "error",
+            "consistent"
+        ],
+        "class-methods-use-this": "off",
+        "semi": [
+            "error",
+            "never"
+        ],
+        "curly": [
+            2,
+            "multi",
+            "consistent"
+        ],
+        "no-empty": [
+            "error",
+            {
+                "allowEmptyCatch": true
+            }
+        ],
+        "comma-dangle": [
+            2,
+            "never"
+        ],
+        "import/no-unresolved": [
+            0
+        ],
+        "import/extensions": [
+            0
+        ],
+        "import/no-extraneous-dependencies": [
+            0
+        ],
+        "padded-blocks": [
+            0
+        ],
+        "no-trailing-spaces": [
+            0
+        ],
+        "no-console": [
+            0
+        ],
+        "spaced-comment": [
+            0
+        ],
+        "arrow-parens": [
+            0
+        ]
+    }
+}

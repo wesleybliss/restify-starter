@@ -1,6 +1,6 @@
-'use strict'
+/** @module Schemas/user */
 
-module.exports = {
+export default {
     
     firstName: String,
     lastName: String

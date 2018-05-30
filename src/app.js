@@ -1,18 +1,19 @@
-'use strict'
+/** @module App */
 
-const restify = require('restify')
-const corsMiddleware = require('restify-cors-middleware')
-const log = require('./utils/logger')
-const config = require('./config')
-const userSchema = require('./schemas/user')
+import restify from 'restify'
+import corsMiddleware from 'restify-cors-middleware'
+import log from './utils/logger'
+import userSchema from './schemas/user'
+import mongoose from './utils/mongoose'
+import UAMS from '../../uams'
 
 const app = restify.createServer({
-    name:    'Restify Starter',
+    name: 'Restify Starter',
     version: '1.0.0'
 })
 
 const cors = corsMiddleware({
-    preflightMaxAge: 5, //Optional
+    preflightMaxAge: 5, // Optional
     origins: ['*'],
     allowHeaders: [
         'X-Access-Token',
@@ -32,10 +33,11 @@ app.use(restify.plugins.authorizationParser())
 app.pre(cors.preflight)
 app.use(cors.actual)
 
-const uams = require('../../uams')({
+const uams = UAMS({
     log,
     app,
-    mongoose: require('./utils/mongoose'),
+    // eslint-disable-next-line global-require
+    mongoose,
     userField: 'email',
     passField: 'password',
     jwtTokenSecret: 'abc123',
@@ -65,4 +67,4 @@ app.on('after', (req, res, route, err) => {
 })
 
 
-module.exports = app
+export default app

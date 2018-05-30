@@ -1,11 +1,12 @@
-'use strict'
+/** @module Utils/mongoose */
 
-const config = require('../config')
-const log = require('./logger')
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+import Bluebird from 'bluebird'
+import config from '../config'
+import log from './logger'
 
 // Have Mongoose use Bluebird instead of mpromise
-mongoose.Promise = require('bluebird')
+mongoose.Promise = Bluebird
 
 const opts = {
     /*server: {
@@ -16,7 +17,15 @@ const opts = {
     }*/
 }
 
-log.info('Connecting to MongoDB @ ' + config.db.uri.split('@').pop())
+const uriPre = config.db.uri.split(':').slice(0, 2).join(':')
+let uriPost = config.db.uri.substring(uriPre.length + 1)
+let uriPass = uriPost.split('@').shift()
+uriPost = uriPost.substring(uriPass.length + 1)
+uriPass = encodeURIComponent(uriPass)
+
+config.db.uri = `${uriPre}:${uriPass}@${uriPost}`
+
+log.info(`Connecting to MongoDB @ ${config.db.uri.split('@').pop()}`)
 
 mongoose.set('debug', (coll, method, query, doc) => {
     if (config.logging.dbQueries)
@@ -42,4 +51,4 @@ mongoose.connection.on('connected', () => {})
 mongoose.connection.on('disconnected', () => {})
 
 
-module.exports = mongoose
+export default mongoose

@@ -1,6 +1,6 @@
-'use strict'
+/** @module Routes/home */
 
-const app = require('../app')
+import app from '../app'
 
 app.get('/', (req, res) => {
     res.send(200, {

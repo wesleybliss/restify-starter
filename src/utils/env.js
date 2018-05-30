@@ -1,4 +1,4 @@
-'use strict'
+/** @module Utils/env */
 
 /**
  * Gets an environment variable, with optional default, and required flag.
@@ -8,9 +8,9 @@
  * @param  {Boolean} [throwIfEmpty] Throw an error if the env is missing/empty
  * @return {Any}                    Env var value
  */
-const defaultEnv = (name, defaultVal = null, throwIfEmpty = false) => {
+export const defaultEnv = (name, defaultVal = null, throwIfEmpty = false) => {
     
-    if (process.env.hasOwnProperty(name))
+    if (name in process.env)
         return process.env[name]
     
     if (throwIfEmpty === true)
@@ -25,8 +25,4 @@ const defaultEnv = (name, defaultVal = null, throwIfEmpty = false) => {
  * 
  * @param  {String} name Name of environment variable (e.g. "NODE_ENV")
  */
-const requireEnv = name => defaultEnv(name, null, true)
-
-
-module.exports.defaultEnv = defaultEnv
-module.exports.requireEnv = requireEnv
+export const requireEnv = name => defaultEnv(name, null, true)

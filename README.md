@@ -21,8 +21,8 @@ $ yarn
 ## Running
 
 ```bash
-$ npm start     // Start in development mode
-$ npm run pm2   // Start PM2 for production
+$ yarn start     // Start in development mode
+$ yarn pm2       // Start PM2 for production
 ```
 
 

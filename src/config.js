@@ -1,6 +1,6 @@
-'use strict'
+/** @module Config */
 
-const { defaultEnv, requireEnv } = require('./utils/env')
+import { requireEnv } from './utils/env'
 
 const config = {
     
@@ -19,4 +19,4 @@ const config = {
 }
 
 
-module.exports = config
+export default config
